@@ -6,6 +6,6 @@
     <h1>{{ name |capitalize}}</h1>
     {% set couleur = ['red', 'green'] %}
     {% for i in 1..10 %}
-    <p style="color: {{cycle(couleur, i)}}">hello {{ name |capitalize}} {{ i}}</p>
+    <p style="color: {{cycle(couleur, i)}}">Hello {{ name |capitalize}} {{ i |format_number({integer_digit:2})}}</p>
     {% endfor %}
 {% endblock %}
