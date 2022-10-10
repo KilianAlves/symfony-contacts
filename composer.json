@@ -90,12 +90,21 @@
         ],
         "test:cs" : [
             "php-cs-fixer fix --dry-run"
+        ],
+        "test:codeception": [
+            "php vendor/bin/codecept run"
+        ],
+        "test": [
+            "@test:cs",
+            "@test:codeception"
         ]
     },
     "scripts-descriptions": {
         "start": "lance un server symfony",
         "fix:cs": "fix le code",
-        "test:cs": "test le code si il a besoin d'être fix ou non"
+        "test:cs": "test le code si il a besoin d'être fix ou non",
+        "test:codeception": "regarde si les test php passe ou non",
+        "test": "regarde si il y a besoin de test:cs et test:codeception ensuite"
     },
     "conflict": {
         "symfony/symfony": "*"
