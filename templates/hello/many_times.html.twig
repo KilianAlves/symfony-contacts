@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hello many times {{ name }}</h1>
+    {% set couleur = ['red', 'green'] %}
+    {% for i in 1..times %}
+        <p style="color: {{cycle(couleur, i)}}">hello {{ name |capitalize}} {{ i }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block title %}
+Hello many times!
+{% endblock %}
+
