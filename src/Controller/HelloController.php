@@ -23,11 +23,11 @@ class HelloController extends AbstractController
         ]);
     }
 
-    #[Route('/hello/{name}/{times}')]
+    #[Route('/hello/{name}/{times}', name: 'app_hello_manytimes')]
     public function manyTimes($name, int $times = 3)
     {
         if ($times == 0 || $times > 10) {
-            $times = 3;
+            return $this->redirectToRoute('app_hello_manytimes',['name' => $name, 'times' => 3]);
         }
         return $this->render('hello/many_times.html.twig', [
             'name' => $name,
