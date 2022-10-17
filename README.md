@@ -17,3 +17,6 @@ test:cs : test le code si il a besoin dêtre fix:cs
 test:codeception : regarde si les test php passe ou non
 
 test: regarde si il y a besoin de test:cs et test:codeception ensuite
+
+
+La classe générée possède des getters et setters ainsi que les attributs.
