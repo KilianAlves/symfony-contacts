@@ -26,6 +26,7 @@ class ContactController extends AbstractController
     public function show(Contact $contact)
     {
         $error = null;
+
         return $this->render('contact/show.html.twig', ['contact' => $contact, 'error' => $error]);
     }
 }
