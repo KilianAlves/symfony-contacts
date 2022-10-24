@@ -14,7 +14,7 @@ fix:cs : fixe le code
 
 test:cs : test le code si il a besoin dêtre fix:cs
 
-test:codeception : regarde si les test php passe ou non
+test:codeception : force la destruction de la base de données silencieusement, crée la base, crée le schéma de la base de donnée puis regarde si les test php passe ou non
 
 test: regarde si il y a besoin de test:cs et test:codeception ensuite
 
