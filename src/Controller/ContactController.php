@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Repository\ContactRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use function PHPUnit\Framework\throwException;
 
 class ContactController extends AbstractController
 {
@@ -15,20 +15,17 @@ class ContactController extends AbstractController
     public function index(ContactRepository $contactRepo): Response
     {
         $contacts = $contactRepo->findBy([], ['lastname' => 'ASC', 'firstname' => 'ASC']);
+
         return $this->render('contact/index.html.twig', [
-            'contacts' => $contacts
+            'contacts' => $contacts,
         ]);
     }
 
     #[Route('/contact/{id}', name: 'app_contact_show', requirements: ['contactId' => '\d+'])]
-    public function show(ContactRepository $contact, $id): Response
+    #[ParamConverter('contact', options: ['mapping' => ['id' => 'id']])]
+    public function show(Contact $contact)
     {
-        $Usercontact = $contact->findOneById($id);
-        // $Usercontact = $contact->findOneBy(['id' => $id]);
-
-        if ($Usercontact == null){
-            throw new NotFoundHttpException("L'id n'est pas valide");
-        }
-        return $this->render('contact/show.html.twig', ['contact' => $Usercontact]);
+        $error = null;
+        return $this->render('contact/show.html.twig', ['contact' => $contact, 'error' => $error]);
     }
 }
