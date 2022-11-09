@@ -39,6 +39,15 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @return Contact[] Returns an array of Contact objects
+     */
+    public function search(string $recherche = ""): array
+    {
+
+        return $recherche;
+    }
+
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */
