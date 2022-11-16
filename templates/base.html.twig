@@ -40,8 +40,8 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" role="search" action="{{ path('app_contact') }}">
+                    <input name="search" class="form-control me-2" type="search" placeholder="Search" value="{{ app_contact.search |default('') }}" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
