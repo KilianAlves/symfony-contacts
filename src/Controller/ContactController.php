@@ -8,13 +8,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(ContactRepository $contactRepo): Response
+    public function index(Request $request,ContactRepository $contactRepo): Response
     {
-        $contacts = $contactRepo->findBy([], ['lastname' => 'ASC', 'firstname' => 'ASC']);
+        $search = $request->query->get('search','');
+        $contacts = $contactRepo->search($search);
 
         return $this->render('contact/index.html.twig', [
             'contacts' => $contacts,
