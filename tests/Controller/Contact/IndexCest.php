@@ -4,6 +4,7 @@ namespace App\Tests\Controller\Contact;
 
 use App\Factory\ContactFactory;
 use App\Tests\Support\ControllerTester;
+use function Zenstruck\Foundry\faker;
 
 class IndexCest
 {
@@ -27,5 +28,18 @@ class IndexCest
         $I->seeInTitle('Aaaaaaaaaaaaaaa Joe');
         $I->see('Aaaaaaaaaaaaaaa Joe', 'h1');
         $I->seeCurrentRouteIs('app_contact_show', ['id' => 1]);
+    }
+
+    public function search(ControllerTester $I): void
+    {
+        ContactFactory::createOne(['firstname' => 'Joe', 'lastname' => 'skufdz']);
+        ContactFactory::createOne(['firstname' => 'ale', 'lastname' => 'pkhgf']);
+        ContactFactory::createOne(['firstname' => 'jaj', 'lastname' => 'ale']);
+        ContactFactory::createOne(['firstname' => 'dcafa', 'lastname' => 'hbtrd']);
+
+        $I->amOnPage('/contact');
+        $I->seeResponseCodeIsSuccessful();
+        $I->amOnPage('/contact?search=ale');
+        $I->seeNumberOfElements(".contact",2);
     }
 }
