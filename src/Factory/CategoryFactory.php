@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Zenstruck\Foundry\RepositoryProxy;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
+use function Zenstruck\Foundry\faker;
 
 /**
  * @extends ModelFactory<Category>
@@ -40,7 +41,7 @@ final class CategoryFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'name' => self::faker()->text(),
+            'name' => ucfirst(self::faker()->word()),
         ];
     }
 
