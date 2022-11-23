@@ -40,12 +40,14 @@ final class ContactFactory extends ModelFactory
     {
         $firstname = self::faker()->firstName();
         $lastname = self::faker()->lastName();
+        $phone = self::faker()->phoneNumber();
 
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => mb_strtolower($firstname).mb_strtolower($lastname).'@'.self::faker()->domainName(),
+            'phone' => $phone,
         ];
     }
 
