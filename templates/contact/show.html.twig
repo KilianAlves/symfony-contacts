@@ -5,6 +5,8 @@
     <p>Nom : {{ contact.lastname }}</p>
     <p>Prenom : {{ contact.firstname }}</p>
     <p>email : {{ contact.email }}</p>
+    <p>téléphone : {{ contact.phone }}</p>
+    <p>catégorie : {{ contact.category ? contact.category.name : "Pas de catégorie"}}</p>
 {% endblock %}
 
 {% block title %}

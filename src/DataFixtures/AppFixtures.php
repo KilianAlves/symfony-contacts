@@ -21,7 +21,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            ContactFactory::class,
+            ContactFixtures::class,
         ];
     }
 }
