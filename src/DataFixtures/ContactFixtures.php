@@ -12,4 +12,11 @@ class ContactFixtures extends Fixture
     {
         ContactFactory::createMany(150);
     }
+
+    public function getDependencies()
+    {
+        return [
+            CategoryFixtures::class,
+        ];
+    }
 }
