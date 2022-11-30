@@ -11,8 +11,10 @@ class CategoryFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        file_get_contents();
-        json_decode();
-        $manager->flush();
+        $categoryFile = file_get_contents('data/Category.json', true);
+        $categories = json_decode($categoryFile, true);
+        foreach ($categories as $elmt) {
+            CategoryFactory::createOne($elmt);
+        }
     }
 }
