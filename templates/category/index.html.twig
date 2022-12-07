@@ -11,9 +11,9 @@
 <div class="example-wrapper">
     <h1>Liste des catégories</h1>
     <ul class="categories">
-        {% for category in categories %}
+        {% for categorie in categories %}
             <li class="category">
-                    <span class="lastname">{{ category.lastname }}</span>,<span class="firstname"> {{ contact.firstname }} </span>
+                    <span>{{ categorie.name }}</span>
             </li>
         {% endfor %}
     </ul>
